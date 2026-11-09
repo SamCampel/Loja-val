@@ -545,10 +545,15 @@
             }
         }
 
-        @media (min-width:900px) {
+        @media (min-width:820px) {
             .hero-grid {
                 grid-template-columns: 1.05fr .95fr;
-                padding: 3rem 0 5rem
+                padding: 3rem 0 5rem;
+                gap: 2rem
+            }
+
+            .plate {
+                width: min(460px, 100%)
             }
         }
 
@@ -617,7 +622,7 @@
         }
 
         section.sec {
-            padding: 5rem 0
+            padding: clamp(3.5rem, 2.4rem + 4.5vw, 6rem) 0
         }
 
         .head {
@@ -636,6 +641,7 @@
         /* categorias */
         .cats {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
             gap: 1.2rem
         }
 
@@ -708,7 +714,6 @@
 
         @media (min-width:800px) {
             .cats {
-                grid-template-columns: repeat(3, 1fr);
                 gap: 1.6rem
             }
         }
@@ -968,7 +973,7 @@
             font-size: var(--fs-caption)
         }
 
-        @media (min-width:800px) {
+        @media (min-width:900px) {
             footer .cols {
                 grid-template-columns: 1.4fr 1fr 1.2fr auto
             }
@@ -998,6 +1003,150 @@
         .fab .ic {
             width: 1.6rem;
             height: 1.6rem
+        }
+
+        /* responsividade */
+        .bar {
+            position: relative
+        }
+
+        .menu summary {
+            list-style: none;
+            display: grid;
+            place-items: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 50%;
+            border: 1px solid currentColor;
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease
+        }
+
+        .menu summary::-webkit-details-marker {
+            display: none
+        }
+
+        .menu summary .ic {
+            width: 1.3rem;
+            height: 1.3rem
+        }
+
+        .menu[open] summary {
+            background: var(--cream);
+            color: var(--brown)
+        }
+
+        .menu-list {
+            position: absolute;
+            right: 0;
+            top: calc(100% + .3rem);
+            z-index: 20;
+            display: grid;
+            min-width: min(260px, calc(100vw - 2.5rem));
+            padding: .6rem;
+            border-radius: 20px;
+            background: var(--cream);
+            box-shadow: 0 20px 40px -12px rgba(30, 15, 10, .5)
+        }
+
+        .menu-list a {
+            display: flex;
+            align-items: center;
+            min-height: 2.9rem;
+            padding: 0 1rem;
+            border-radius: 12px;
+            color: var(--ink);
+            text-decoration: none;
+            font: 500 1rem/1 var(--font-body)
+        }
+
+        .menu-list a:hover {
+            background: var(--blush)
+        }
+
+        .bar .soc {
+            display: none
+        }
+
+        .btn span:first-child {
+            min-width: 0
+        }
+
+        @media (min-width:480px) {
+            .bar .soc {
+                display: flex
+            }
+        }
+
+        @media (min-width:800px) {
+            .menu {
+                display: none
+            }
+        }
+
+        @media (max-width:479px) {
+            .ctas .btn {
+                width: 100%;
+                justify-content: space-between
+            }
+
+            .ctas .btn--line {
+                justify-content: center
+            }
+
+            .final .btn {
+                width: 100%;
+                justify-content: space-between
+            }
+
+            .note {
+                left: 0
+            }
+
+            .head {
+                margin-bottom: 1.8rem
+            }
+        }
+
+        @media (max-width:339px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media (min-width:560px) and (max-width:799px) {
+            footer .cols {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .perk h3 {
+                font-size: 1.1rem
+            }
+
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.4rem
+            }
+        }
+
+        @media (min-width:1500px) {
+            .wrap {
+                width: min(1320px, 100% - 4rem)
+            }
+        }
+
+        @media (hover:none) {
+
+            .card:hover,
+            .cat:hover {
+                transform: none
+            }
+        }
+
+        @media (max-height:500px) and (orientation:landscape) {
+            .hero-grid {
+                padding-top: 1rem
+            }
         }
 
         @media (prefers-reduced-motion:reduce) {
@@ -1056,6 +1205,10 @@
                 <circle cx="12" cy="11" r="2.2" />
             </g>
         </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+            <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" />
+        </symbol>
     </svg>
 
     <header class="hero">
@@ -1073,6 +1226,14 @@
                             <use href="#i-wa" />
                         </svg></a>
                 </div>
+                <details class="menu">
+                    <summary aria-label="Abrir menu"><svg class="ic">
+                            <use href="#i-menu" />
+                        </svg></summary>
+                    <nav class="menu-list" aria-label="Menu para celular"><a href="#doces">Doces</a><a
+                            href="#caixas">Caixas</a><a href="#sobre">Sobre</a><a href="#como-pedir">Como pedir</a>
+                    </nav>
+                </details>
             </div>
             <div class="hero-grid">
                 <div>
@@ -1396,6 +1557,7 @@
         aria-label="Chamar a Val no WhatsApp"><svg class="ic">
             <use href="#i-wa" />
         </svg></a>
+    <script>document.querySelectorAll('.menu a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').removeAttribute('open') }) })</script>
 </body>
 
 </html>
