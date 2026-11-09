@@ -1,1563 +1,363 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="color-scheme" content="light">
-    <title>Val Rodrigues | Confeitaria artesanal em Diadema</title>
-    <meta name="description"
-        content="Tortas, caixas e sobremesas artesanais feitas sob encomenda em Diadema, SP. Peça pelo WhatsApp.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Work+Sans:wght@400..600&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap&text=feito%20com%20carinho"
-        rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'Fraunces Fallback';
-            src: local('Georgia');
-            size-adjust: 100%
-        }
-
-        @font-face {
-            font-family: 'Work Sans Fallback';
-            src: local('Arial');
-            size-adjust: 100%
-        }
-
-        :root {
-            --bg: #fff6e8;
-            --cream: #ffeac5;
-            --blush: #ffdccf;
-            --salmon: #ffa68e;
-            --caramel: #dc966c;
-            --wine: #9f3140;
-            --brown: #6e524a;
-            --ink: #3b2823;
-            --card: #fffbf3;
-            --line: rgba(110, 82, 74, .25);
-            --grad-cta: linear-gradient(135deg, #b93d4f 0%, #9f3140 55%, #83263a 100%);
-            --grad-cta-light: linear-gradient(135deg, #ffc3b2 0%, #ffa68e 55%, #f58e72 100%);
-            --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
-            --font-body: 'Work Sans', 'Work Sans Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
-            --fs-caption: clamp(.8125rem, .788rem + .109vw, .875rem);
-            --fs-body: clamp(1.0625rem, 1.038rem + .109vw, 1.125rem);
-            --fs-lead: clamp(1.1875rem, 1.114rem + .326vw, 1.375rem);
-            --fs-h3: clamp(1.5rem, 1.353rem + .652vw, 1.875rem);
-            --fs-h2: clamp(2.25rem, 1.761rem + 2.174vw, 3.5rem);
-            --fs-h1: clamp(2.75rem, 1.968rem + 3.478vw, 4.75rem);
-            --fs-script: clamp(2.2rem, 1.9rem + 1.4vw, 3rem);
-            --lh-title: 1.05;
-            --lh-heading: 1.15;
-            --lh-body: 1.65;
-            --ls-caps: .12em;
-            --measure: 62ch;
-            box-sizing: border-box;
-            padding-top: env(safe-area-inset-top, 0px);
-            padding-bottom: env(safe-area-inset-bottom, 0px)
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit
-        }
-
-        html {
-            background: var(--ink);
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%
-        }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--brown);
-            font: 400 var(--fs-body)/var(--lh-body) var(--font-body);
-            font-kerning: normal;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased
-        }
-
-        h1,
-        h2,
-        h3,
-        p {
-            margin: 0
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: var(--font-display);
-            font-weight: 500;
-            line-height: var(--lh-title);
-            color: var(--ink);
-            text-wrap: balance
-        }
-
-        h3 {
-            font-weight: 600;
-            line-height: var(--lh-heading)
-        }
-
-        p {
-            max-width: var(--measure);
-            text-wrap: pretty
-        }
-
-        a {
-            color: inherit
-        }
-
-        img {
-            display: block;
-            max-width: 100%
-        }
-
-        :focus-visible {
-            outline: 3px solid var(--wine);
-            outline-offset: 3px
-        }
-
-        .hero :focus-visible,
-        .dark :focus-visible,
-        footer :focus-visible {
-            outline-color: var(--salmon)
-        }
-
-        .wrap {
-            width: min(1180px, 100% - 2.5rem);
-            margin-inline: auto
-        }
-
-        .ic {
-            width: 1.1rem;
-            height: 1.1rem;
-            display: block
-        }
-
-        .label {
-            font: 500 var(--fs-caption)/1.4 var(--font-body);
-            letter-spacing: var(--ls-caps);
-            text-transform: uppercase;
-            color: var(--brown)
-        }
-
-        /* botões: 3 variantes (primário, secundário, ghost) com estados */
-        .btn,
-        .pill {
-            --ring: var(--wine)
-        }
-
-        .btn {
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            min-height: 3.25rem;
-            padding: 0 .5rem 0 1.7rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            background: var(--grad-cta);
-            color: var(--cream);
-            font: 500 .8125rem/1.2 var(--font-body);
-            letter-spacing: var(--ls-caps);
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 10px 22px -8px rgba(159, 49, 64, .6), inset 0 1px 0 rgba(255, 255, 255, .28);
-            transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease, color .2s ease
-        }
-
-        .btn::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .35) 50%, transparent 70%);
-            transform: translateX(-120%);
-            transition: transform .6s ease;
-            pointer-events: none
-        }
-
-        .btn .go {
-            position: relative;
-            display: grid;
-            place-items: center;
-            flex: none;
-            width: 2.25rem;
-            height: 2.25rem;
-            border-radius: 50%;
-            background: var(--salmon);
-            color: var(--ink);
-            transition: transform .2s ease
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.06);
-            box-shadow: 0 16px 28px -10px rgba(159, 49, 64, .7), 0 0 0 4px rgba(255, 166, 142, .28), inset 0 1px 0 rgba(255, 255, 255, .3)
-        }
-
-        .btn:hover::after {
-            transform: translateX(120%)
-        }
-
-        .btn:hover .go {
-            transform: translateX(3px)
-        }
-
-        .btn:focus-visible,
-        .pill:focus-visible {
-            outline: 3px solid var(--ring);
-            outline-offset: 3px
-        }
-
-        .btn:active {
-            transform: translateY(0) scale(.98);
-            filter: brightness(.96);
-            box-shadow: 0 4px 10px -4px rgba(159, 49, 64, .6)
-        }
-
-        .btn[disabled],
-        .btn[aria-disabled="true"],
-        .pill[aria-disabled="true"] {
-            opacity: .5;
-            cursor: not-allowed;
-            pointer-events: none;
-            filter: grayscale(.3);
-            box-shadow: none
-        }
-
-        /* secundário */
-        .btn--line {
-            padding-right: 1.7rem;
-            background: transparent;
-            color: var(--wine);
-            border-color: var(--wine);
-            box-shadow: none
-        }
-
-        .btn--line::after {
-            display: none
-        }
-
-        .btn--line .ic {
-            transition: transform .2s ease
-        }
-
-        .btn--line:hover {
-            background: var(--wine);
-            color: var(--cream);
-            box-shadow: 0 12px 22px -10px rgba(159, 49, 64, .6);
-            filter: none
-        }
-
-        .btn--line:hover .ic {
-            transform: translateX(3px)
-        }
-
-        /* terciário (ghost) */
-        .btn--ghost {
-            padding: 0 .4rem;
-            min-height: 2.75rem;
-            background: transparent;
-            color: var(--wine);
-            box-shadow: none;
-            border-radius: 8px;
-            gap: .6rem;
-            border-bottom: 1px solid currentColor;
-            border-radius: 0
-        }
-
-        .btn--ghost::after {
-            display: none
-        }
-
-        .btn--ghost:hover {
-            background: transparent;
-            box-shadow: none;
-            filter: none;
-            color: #7f2432;
-            transform: none
-        }
-
-        .btn--ghost .ic {
-            transition: transform .2s ease
-        }
-
-        .btn--ghost:hover .ic {
-            transform: translateX(4px)
-        }
-
-        /* variantes sobre fundo escuro */
-        .hero .btn,
-        .dark .btn {
-            --ring: var(--salmon);
-            background: var(--grad-cta-light);
-            color: var(--ink);
-            box-shadow: 0 12px 24px -8px rgba(20, 8, 6, .55), inset 0 1px 0 rgba(255, 255, 255, .45)
-        }
-
-        .hero .btn:hover,
-        .dark .btn:hover {
-            box-shadow: 0 18px 30px -10px rgba(20, 8, 6, .65), 0 0 0 4px rgba(255, 234, 197, .25), inset 0 1px 0 rgba(255, 255, 255, .5)
-        }
-
-        .hero .btn .go,
-        .dark .btn .go {
-            background: var(--brown);
-            color: var(--cream)
-        }
-
-        .hero .btn--line,
-        .dark .btn--line {
-            background: transparent;
-            color: var(--cream);
-            border-color: var(--cream);
-            box-shadow: none
-        }
-
-        .hero .btn--line:hover,
-        .dark .btn--line:hover {
-            background: var(--cream);
-            color: var(--brown);
-            box-shadow: none
-        }
-
-        /* botão de cartão */
-        .pill {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: .6rem;
-            min-height: 2.9rem;
-            padding: 0 1.1rem;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, .4);
-            text-decoration: none;
-            font: 500 .8125rem/1 var(--font-body);
-            letter-spacing: var(--ls-caps);
-            text-transform: uppercase;
-            color: var(--wine);
-            transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease
-        }
-
-        .pill .ic {
-            width: .95rem;
-            height: .95rem;
-            transition: transform .2s ease
-        }
-
-        .pill:hover {
-            background: var(--grad-cta);
-            color: var(--cream);
-            border-color: transparent;
-            transform: translateY(-1px);
-            box-shadow: 0 10px 18px -10px rgba(159, 49, 64, .7)
-        }
-
-        .pill:hover .ic {
-            transform: translateX(3px)
-        }
-
-        .pill:active {
-            transform: scale(.98)
-        }
-
-        /* ícones sociais */
-        .soc {
-            display: flex;
-            gap: .6rem
-        }
-
-        .soc a {
-            display: grid;
-            place-items: center;
-            width: 2.75rem;
-            height: 2.75rem;
-            border-radius: 50%;
-            border: 1px solid currentColor;
-            color: var(--cream);
-            transition: background .25s, color .25s, border-color .25s
-        }
-
-        .soc a:hover {
-            background: var(--salmon);
-            border-color: var(--salmon);
-            color: var(--ink)
-        }
-
-        .soc .ic {
-            width: 1.2rem;
-            height: 1.2rem
-        }
-
-        /* topo e hero */
-        .hero {
-            background: radial-gradient(70% 90% at 82% 18%, #8c6b60 0%, rgba(140, 107, 96, 0) 70%), radial-gradient(50% 60% at 8% 100%, rgba(220, 150, 108, .22) 0%, rgba(220, 150, 108, 0) 70%), var(--brown);
-            color: var(--cream)
-        }
-
-        .hero,
-        .dark,
-        footer {
-            position: relative;
-            isolation: isolate
-        }
-
-        .hero::before,
-        .dark::before,
-        footer::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background-image: var(--grain);
-            opacity: .09;
-            pointer-events: none
-        }
-
-        .bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1.1rem 0
-        }
-
-        .brand {
-            font: 600 1.6rem/1 var(--font-display);
-            text-decoration: none;
-            color: var(--cream)
-        }
-
-        .nav {
-            display: none;
-            gap: 2.2rem
-        }
-
-        .nav a {
-            font: 500 .8125rem/1 var(--font-body);
-            letter-spacing: var(--ls-caps);
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: .5rem 0;
-            border-bottom: 1px solid transparent
-        }
-
-        .nav a:hover {
-            border-color: var(--salmon)
-        }
-
-        @media (min-width:800px) {
-            .nav {
-                display: flex
-            }
-        }
-
-        .hero-grid {
-            display: grid;
-            gap: 2.8rem;
-            padding: 2rem 0 3.5rem;
-            align-items: center
-        }
-
-        .hero h1 {
-            font-size: var(--fs-h1);
-            color: var(--cream);
-            letter-spacing: -.02em;
-            animation: rise .9s .05s both
-        }
-
-        .hero p.lead {
-            font-size: var(--fs-lead);
-            line-height: 1.5;
-            color: #f3dcc4;
-            margin: 1.3rem 0 2rem;
-            max-width: 30ch;
-            animation: rise .9s .25s both
-        }
-
-        .ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .8rem;
-            animation: rise .9s .45s both
-        }
-
-        .plate {
-            position: relative;
-            width: min(460px, 86vw);
-            aspect-ratio: 1;
-            margin: 0 auto
-        }
-
-        .plate img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 10px solid var(--cream);
-            box-shadow: 0 26px 44px rgba(40, 20, 14, .4);
-            animation: reveal 1.2s .2s cubic-bezier(.2, .7, .2, 1) both
-        }
-
-        .note {
-            position: absolute;
-            left: -2%;
-            bottom: 7%;
-            background: var(--cream);
-            color: var(--wine);
-            padding: .35rem 1.2rem .5rem;
-            border-radius: 6px;
-            rotate: -6deg;
-            font: 400 var(--fs-script)/1 'Allura', cursive;
-            box-shadow: 0 8px 18px rgba(40, 20, 14, .3)
-        }
-
-        @keyframes rise {
-            from {
-                opacity: 0;
-                transform: translateY(18px)
-            }
-
-            to {
-                opacity: 1;
-                transform: none
-            }
-        }
-
-        @keyframes reveal {
-            from {
-                clip-path: circle(0% at 50% 50%)
-            }
-
-            to {
-                clip-path: circle(75% at 50% 50%)
-            }
-        }
-
-        @media (min-width:820px) {
-            .hero-grid {
-                grid-template-columns: 1.05fr .95fr;
-                padding: 3rem 0 5rem;
-                gap: 2rem
-            }
-
-            .plate {
-                width: min(460px, 100%)
-            }
-        }
-
-        .tear {
-            display: block;
-            width: 100%;
-            height: clamp(18px, 3vw, 38px);
-            margin-top: -1px;
-            fill: var(--brown)
-        }
-
-        .tear--top {
-            margin-top: 0;
-            margin-bottom: -1px;
-            fill: var(--ink)
-        }
-
-        /* diferenciais */
-        .perks {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem 1rem;
-            padding: 3.5rem 0 1rem;
-            text-align: center
-        }
-
-        .perk {
-            display: grid;
-            justify-items: center;
-            gap: .5rem
-        }
-
-        .perk .ico {
-            display: grid;
-            place-items: center;
-            width: 3.6rem;
-            height: 3.6rem;
-            border-radius: 50%;
-            background: var(--blush);
-            color: var(--wine)
-        }
-
-        .perk .ico svg {
-            width: 1.6rem;
-            height: 1.6rem
-        }
-
-        .perk h3 {
-            font-size: 1.3rem
-        }
-
-        .perk p {
-            font-size: var(--fs-caption);
-            line-height: 1.45
-        }
-
-        @media (min-width:860px) {
-            .perks {
-                grid-template-columns: repeat(4, 1fr);
-                padding-top: 4.5rem
-            }
-
-            .perk+.perk {
-                border-left: 1px solid var(--line)
-            }
-        }
-
-        section.sec {
-            padding: clamp(3.5rem, 2.4rem + 4.5vw, 6rem) 0
-        }
-
-        .head {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: end;
-            gap: .8rem 1.5rem;
-            margin-bottom: 2.4rem
-        }
-
-        .head h2 {
-            font-size: var(--fs-h2)
-        }
-
-        /* categorias */
-        .cats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-            gap: 1.2rem
-        }
-
-        .cat {
-            display: grid;
-            gap: 1.1rem;
-            padding: 1.5rem 1.5rem 1.3rem;
-            border-radius: 28px;
-            text-decoration: none;
-            color: var(--ink);
-            transition: transform .35s
-        }
-
-        .cat:hover {
-            transform: translateY(-6px)
-        }
-
-        .cat h3 {
-            font-size: var(--fs-h3);
-            text-align: center
-        }
-
-        .cat .shot {
-            aspect-ratio: 5/4;
-            overflow: hidden;
-            border-radius: 18px
-        }
-
-        .cat .shot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover
-        }
-
-        .cat .row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            font-weight: 500
-        }
-
-        .cat .go {
-            display: grid;
-            place-items: center;
-            flex: none;
-            width: 2.7rem;
-            height: 2.7rem;
-            border-radius: 50%;
-            background: var(--bg);
-            color: var(--ink)
-        }
-
-        .cat--a {
-            background: linear-gradient(160deg, #ffc2b0 0%, #ffa68e 100%)
-        }
-
-        .cat--b {
-            background: linear-gradient(160deg, #eab08a 0%, #dc966c 100%)
-        }
-
-        .cat--c {
-            background: linear-gradient(160deg, #b13a4b 0%, #8c2a38 100%);
-            color: var(--cream)
-        }
-
-        .cat--c h3 {
-            color: var(--cream)
-        }
-
-        @media (min-width:800px) {
-            .cats {
-                gap: 1.6rem
-            }
-        }
-
-        /* produtos */
-        .cream {
-            background: linear-gradient(180deg, #ffeac5 0%, #fff0d6 100%)
-        }
-
-        .blush {
-            background: linear-gradient(180deg, #ffdccf 0%, #ffe9df 100%)
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem
-        }
-
-        @media (min-width:800px) {
-            .grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.6rem
-            }
-        }
-
-        .card {
-            display: grid;
-            align-content: start;
-            gap: .2rem;
-            background: linear-gradient(180deg, #fffdf8, #fff6e8);
-            border-radius: 22px;
-            padding: .7rem .7rem 1rem;
-            box-shadow: 0 1px 0 rgba(110, 82, 74, .1), 0 14px 26px -18px rgba(110, 82, 74, .5);
-            transition: transform .25s ease, box-shadow .25s ease
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 1px 0 rgba(110, 82, 74, .1), 0 22px 32px -18px rgba(110, 82, 74, .55)
-        }
-
-        .card .ph {
-            display: block;
-            overflow: hidden;
-            aspect-ratio: 4/5;
-            border-radius: 16px;
-            background: var(--cream)
-        }
-
-        .card .ph img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .8s cubic-bezier(.2, .7, .2, 1)
-        }
-
-        .card .ph:hover img {
-            transform: scale(1.05)
-        }
-
-        .crop-b {
-            transform-origin: 50% 100%;
-            scale: 1.28
-        }
-
-        .card h3 {
-            font-size: clamp(1.3rem, 1.15rem + .6vw, 1.65rem);
-            margin: .8rem .3rem 0
-        }
-
-        .card .label {
-            margin: .1rem .3rem .8rem
-        }
-
-        .strip {
-            display: flex;
-            gap: 1.2rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 1.2rem;
-            -webkit-overflow-scrolling: touch
-        }
-
-        .strip .card {
-            flex: 0 0 min(270px, 74vw);
-            scroll-snap-align: start
-        }
-
-        /* sobre */
-        .about {
-            display: grid;
-            gap: 2.4rem;
-            align-items: center
-        }
-
-        .about .pic {
-            position: relative;
-            width: min(420px, 100%);
-            aspect-ratio: 4/5;
-            margin-inline: auto
-        }
-
-        .about .pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 220px 220px 24px 24px;
-            border: 8px solid var(--cream)
-        }
-
-        .about h2 {
-            font-size: var(--fs-h2);
-            margin: .8rem 0 1.1rem
-        }
-
-        .about p {
-            margin-bottom: 1.7rem
-        }
-
-        @media (min-width:860px) {
-            .about {
-                grid-template-columns: .9fr 1.1fr;
-                gap: 5rem
-            }
-        }
-
-        /* passos */
-        .steps {
-            display: grid;
-            gap: 2rem;
-            counter-reset: s;
-            padding: 0;
-            margin: 0;
-            list-style: none
-        }
-
-        .steps li {
-            counter-increment: s;
-            border-top: 1px solid var(--line);
-            padding-top: 1.2rem
-        }
-
-        .steps li::before {
-            content: counter(s);
-            display: block;
-            font: italic 500 3.6rem/1 var(--font-display);
-            color: var(--wine);
-            margin-bottom: .5rem
-        }
-
-        .steps h3 {
-            font-size: var(--fs-h3);
-            margin-bottom: .4rem
-        }
-
-        .steps p {
-            max-width: 30ch
-        }
-
-        @media (min-width:800px) {
-            .steps {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 3rem
-            }
-        }
-
-        /* chamada final */
-        .dark {
-            background: radial-gradient(70% 140% at 88% 0%, #bd4254 0%, rgba(189, 66, 84, 0) 65%), linear-gradient(180deg, #9f3140, #85283a);
-            color: var(--cream)
-        }
-
-        .dark h2 {
-            color: var(--cream)
-        }
-
-        .dark .label {
-            color: #ffd3c4
-        }
-
-        .final {
-            display: grid;
-            gap: 1.8rem;
-            justify-items: start
-        }
-
-        .final h2 {
-            font-size: var(--fs-h2);
-            max-width: 18ch
-        }
-
-        @media (min-width:800px) {
-            .final {
-                grid-template-columns: 1fr auto;
-                align-items: center
-            }
-        }
-
-        footer {
-            background: linear-gradient(180deg, #3b2823, #2e1e1a);
-            color: #e9d3bd;
-            padding: 2.5rem 0 6.5rem
-        }
-
-        footer .cols {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 1fr
-        }
-
-        footer .brand {
-            font-size: 1.9rem
-        }
-
-        footer h3 {
-            font: 500 var(--fs-caption)/1.4 var(--font-body);
-            letter-spacing: var(--ls-caps);
-            text-transform: uppercase;
-            color: var(--salmon);
-            margin-bottom: .8rem
-        }
-
-        footer ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: .5rem
-        }
-
-        footer a {
-            text-decoration: none
-        }
-
-        footer a:hover {
-            text-decoration: underline
-        }
-
-        footer li {
-            display: flex;
-            gap: .6rem;
-            align-items: center
-        }
-
-        footer .ic {
-            width: 1rem;
-            height: 1rem;
-            flex: none;
-            color: var(--salmon)
-        }
-
-        footer .copy {
-            margin-top: 2.4rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(233, 211, 189, .2);
-            font-size: var(--fs-caption)
-        }
-
-        @media (min-width:900px) {
-            footer .cols {
-                grid-template-columns: 1.4fr 1fr 1.2fr auto
-            }
-        }
-
-        .fab {
-            position: fixed;
-            right: 1rem;
-            bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-            z-index: 5;
-            display: grid;
-            place-items: center;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            background: var(--wine);
-            color: var(--cream);
-            border: 2px solid var(--salmon);
-            box-shadow: 0 8px 20px rgba(59, 40, 35, .35);
-            transition: transform .2s
-        }
-
-        .fab:hover {
-            transform: scale(1.07)
-        }
-
-        .fab .ic {
-            width: 1.6rem;
-            height: 1.6rem
-        }
-
-        /* responsividade */
-        .bar {
-            position: relative
-        }
-
-        .menu summary {
-            list-style: none;
-            display: grid;
-            place-items: center;
-            width: 2.75rem;
-            height: 2.75rem;
-            border-radius: 50%;
-            border: 1px solid currentColor;
-            cursor: pointer;
-            transition: background .2s ease, color .2s ease
-        }
-
-        .menu summary::-webkit-details-marker {
-            display: none
-        }
-
-        .menu summary .ic {
-            width: 1.3rem;
-            height: 1.3rem
-        }
-
-        .menu[open] summary {
-            background: var(--cream);
-            color: var(--brown)
-        }
-
-        .menu-list {
-            position: absolute;
-            right: 0;
-            top: calc(100% + .3rem);
-            z-index: 20;
-            display: grid;
-            min-width: min(260px, calc(100vw - 2.5rem));
-            padding: .6rem;
-            border-radius: 20px;
-            background: var(--cream);
-            box-shadow: 0 20px 40px -12px rgba(30, 15, 10, .5)
-        }
-
-        .menu-list a {
-            display: flex;
-            align-items: center;
-            min-height: 2.9rem;
-            padding: 0 1rem;
-            border-radius: 12px;
-            color: var(--ink);
-            text-decoration: none;
-            font: 500 1rem/1 var(--font-body)
-        }
-
-        .menu-list a:hover {
-            background: var(--blush)
-        }
-
-        .bar .soc {
-            display: none
-        }
-
-        .btn span:first-child {
-            min-width: 0
-        }
-
-        @media (min-width:480px) {
-            .bar .soc {
-                display: flex
-            }
-        }
-
-        @media (min-width:800px) {
-            .menu {
-                display: none
-            }
-        }
-
-        @media (max-width:479px) {
-            .ctas .btn {
-                width: 100%;
-                justify-content: space-between
-            }
-
-            .ctas .btn--line {
-                justify-content: center
-            }
-
-            .final .btn {
-                width: 100%;
-                justify-content: space-between
-            }
-
-            .note {
-                left: 0
-            }
-
-            .head {
-                margin-bottom: 1.8rem
-            }
-        }
-
-        @media (max-width:339px) {
-            .grid {
-                grid-template-columns: 1fr
-            }
-        }
-
-        @media (min-width:560px) and (max-width:799px) {
-            footer .cols {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .perk h3 {
-                font-size: 1.1rem
-            }
-
-            .steps {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.4rem
-            }
-        }
-
-        @media (min-width:1500px) {
-            .wrap {
-                width: min(1320px, 100% - 4rem)
-            }
-        }
-
-        @media (hover:none) {
-
-            .card:hover,
-            .cat:hover {
-                transform: none
-            }
-        }
-
-        @media (max-height:500px) and (orientation:landscape) {
-            .hero-grid {
-                padding-top: 1rem
-            }
-        }
-
-        @media (prefers-reduced-motion:reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Val Rodrigues | Confeitaria artesanal em Diadema</title>
+<meta name="description" content="Tortas, caixas e sobremesas artesanais feitas sob encomenda em Diadema, SP. Peça pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Work+Sans:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap&text=feito%20com%20carinho" rel="stylesheet">
+<style>
+@font-face{font-family:'Fraunces Fallback';src:local('Georgia');size-adjust:100%}
+@font-face{font-family:'Work Sans Fallback';src:local('Arial');size-adjust:100%}
+:root{
+--bg:#fff6e8;--cream:#ffeac5;--blush:#ffdccf;--salmon:#ffa68e;--caramel:#dc966c;--wine:#9f3140;--brown:#6e524a;--ink:#3b2823;--card:#fffbf3;
+--line:rgba(110,82,74,.25);
+--grad-cta:linear-gradient(135deg,#b93d4f 0%,#9f3140 55%,#83263a 100%);
+--grad-cta-light:linear-gradient(135deg,#ffc3b2 0%,#ffa68e 55%,#f58e72 100%);
+--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+--font-display:'Fraunces','Fraunces Fallback',Georgia,serif;
+--font-body:'Work Sans','Work Sans Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;
+--fs-caption:clamp(.8125rem,.788rem + .109vw,.875rem);
+--fs-body:clamp(1.0625rem,1.038rem + .109vw,1.125rem);
+--fs-lead:clamp(1.1875rem,1.114rem + .326vw,1.375rem);
+--fs-h3:clamp(1.5rem,1.353rem + .652vw,1.875rem);
+--fs-h2:clamp(2.25rem,1.761rem + 2.174vw,3.5rem);
+--fs-h1:clamp(2.75rem,1.968rem + 3.478vw,4.75rem);
+--fs-script:clamp(2.2rem,1.9rem + 1.4vw,3rem);
+--lh-title:1.05;--lh-heading:1.15;--lh-body:1.65;--ls-caps:.12em;--measure:62ch;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--ink);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--brown);font:400 var(--fs-body)/var(--lh-body) var(--font-body);font-kerning:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:var(--lh-title);color:var(--ink);text-wrap:balance}
+h3{font-weight:600;line-height:var(--lh-heading)}
+p{max-width:var(--measure);text-wrap:pretty}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+.hero :focus-visible,.dark :focus-visible,footer :focus-visible{outline-color:var(--salmon)}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.ic{width:1.1rem;height:1.1rem;display:block}
+.label{font:500 var(--fs-caption)/1.4 var(--font-body);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--brown)}
+
+/* botões: 3 variantes (primário, secundário, ghost) com estados */
+.btn,.pill{--ring:var(--wine)}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-height:3.25rem;padding:0 .5rem 0 1.7rem;border-radius:999px;border:1px solid transparent;background:var(--grad-cta);color:var(--cream);font:500 .8125rem/1.2 var(--font-body);letter-spacing:var(--ls-caps);text-transform:uppercase;text-decoration:none;cursor:pointer;box-shadow:0 10px 22px -8px rgba(159,49,64,.6),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease,background .2s ease,color .2s ease}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s ease;pointer-events:none}
+.btn .go{position:relative;display:grid;place-items:center;flex:none;width:2.25rem;height:2.25rem;border-radius:50%;background:var(--salmon);color:var(--ink);transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 16px 28px -10px rgba(159,49,64,.7),0 0 0 4px rgba(255,166,142,.28),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover .go{transform:translateX(3px)}
+.btn:focus-visible,.pill:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
+.btn:active{transform:translateY(0) scale(.98);filter:brightness(.96);box-shadow:0 4px 10px -4px rgba(159,49,64,.6)}
+.btn[disabled],.btn[aria-disabled="true"],.pill[aria-disabled="true"]{opacity:.5;cursor:not-allowed;pointer-events:none;filter:grayscale(.3);box-shadow:none}
+/* secundário */
+.btn--line{padding-right:1.7rem;background:transparent;color:var(--wine);border-color:var(--wine);box-shadow:none}
+.btn--line::after{display:none}
+.btn--line .ic{transition:transform .2s ease}
+.btn--line:hover{background:var(--wine);color:var(--cream);box-shadow:0 12px 22px -10px rgba(159,49,64,.6);filter:none}
+.btn--line:hover .ic{transform:translateX(3px)}
+/* terciário (ghost) */
+.btn--ghost{padding:0 .4rem;min-height:2.75rem;background:transparent;color:var(--wine);box-shadow:none;border-radius:8px;gap:.6rem;border-bottom:1px solid currentColor;border-radius:0}
+.btn--ghost::after{display:none}
+.btn--ghost:hover{background:transparent;box-shadow:none;filter:none;color:#7f2432;transform:none}
+.btn--ghost .ic{transition:transform .2s ease}.btn--ghost:hover .ic{transform:translateX(4px)}
+/* variantes sobre fundo escuro */
+.hero .btn,.dark .btn{--ring:var(--salmon);background:var(--grad-cta-light);color:var(--ink);box-shadow:0 12px 24px -8px rgba(20,8,6,.55),inset 0 1px 0 rgba(255,255,255,.45)}
+.hero .btn:hover,.dark .btn:hover{box-shadow:0 18px 30px -10px rgba(20,8,6,.65),0 0 0 4px rgba(255,234,197,.25),inset 0 1px 0 rgba(255,255,255,.5)}
+.hero .btn .go,.dark .btn .go{background:var(--brown);color:var(--cream)}
+.hero .btn--line,.dark .btn--line{background:transparent;color:var(--cream);border-color:var(--cream);box-shadow:none}
+.hero .btn--line:hover,.dark .btn--line:hover{background:var(--cream);color:var(--brown);box-shadow:none}
+/* botão de cartão */
+.pill{display:flex;align-items:center;justify-content:space-between;gap:.6rem;min-height:2.9rem;padding:0 1.1rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.4);text-decoration:none;font:500 .8125rem/1 var(--font-body);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--wine);transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.pill .ic{width:.95rem;height:.95rem;transition:transform .2s ease}
+.pill:hover{background:var(--grad-cta);color:var(--cream);border-color:transparent;transform:translateY(-1px);box-shadow:0 10px 18px -10px rgba(159,49,64,.7)}.pill:hover .ic{transform:translateX(3px)}
+.pill:active{transform:scale(.98)}
+
+/* ícones sociais */
+.soc{display:flex;gap:.6rem}
+.soc a{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid currentColor;color:var(--cream);transition:background .25s,color .25s,border-color .25s}
+.soc a:hover{background:var(--salmon);border-color:var(--salmon);color:var(--ink)}
+.soc .ic{width:1.2rem;height:1.2rem}
+
+/* topo e hero */
+.hero{background:radial-gradient(70% 85% at 88% 0%,#bd4254 0%,rgba(189,66,84,0) 65%),linear-gradient(180deg,#9f3140,#85283a);color:var(--cream)}
+.hero,.dark,footer{position:relative;isolation:isolate}
+.hero::before,.dark::before,footer::before{content:"";position:absolute;inset:0;z-index:-1;background-image:var(--grain);opacity:.09;pointer-events:none}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.brand{font:600 1.6rem/1 var(--font-display);text-decoration:none;color:var(--cream)}
+.nav{display:none;gap:2.2rem}
+.nav a{font:500 .8125rem/1 var(--font-body);letter-spacing:var(--ls-caps);text-transform:uppercase;text-decoration:none;padding:.5rem 0;border-bottom:1px solid transparent}
+.nav a:hover{border-color:var(--salmon)}
+@media (min-width:800px){.nav{display:flex}}
+.hero-grid{display:grid;gap:2.8rem;padding:2rem 0 3.5rem;align-items:center}
+.hero h1{font-size:var(--fs-h1);color:var(--cream);letter-spacing:-.02em;animation:rise .9s .05s both}
+.hero p.lead{font-size:var(--fs-lead);line-height:1.5;color:#f3dcc4;margin:1.3rem 0 2rem;max-width:30ch;animation:rise .9s .25s both}
+.ctas{display:flex;flex-wrap:wrap;gap:.8rem;animation:rise .9s .45s both}
+.plate{position:relative;width:min(460px,86vw);aspect-ratio:1;margin:0 auto}
+.plate img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:10px solid var(--cream);box-shadow:0 26px 44px rgba(40,20,14,.4);animation:reveal 1.2s .2s cubic-bezier(.2,.7,.2,1) both}
+.note{position:absolute;left:-2%;bottom:7%;background:var(--cream);color:var(--wine);padding:.35rem 1.2rem .5rem;border-radius:6px;rotate:-6deg;font:400 var(--fs-script)/1 'Allura',cursive;box-shadow:0 8px 18px rgba(40,20,14,.3)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes reveal{from{clip-path:circle(0% at 50% 50%)}to{clip-path:circle(75% at 50% 50%)}}
+@media (min-width:820px){.hero-grid{grid-template-columns:1.05fr .95fr;padding:3rem 0 5rem;gap:2rem}.plate{width:min(460px,100%)}}
+.tear{display:block;width:100%;height:clamp(18px,3vw,38px);margin-top:-1px;fill:#85283a}
+.tear--top{margin-top:0;margin-bottom:-1px;fill:var(--ink)}
+
+/* diferenciais */
+.perks{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1rem;padding:3.5rem 0 1rem;text-align:center}
+.perk{display:grid;justify-items:center;gap:.5rem}
+.perk .ico{display:grid;place-items:center;width:3.6rem;height:3.6rem;border-radius:50%;background:var(--blush);color:var(--wine)}
+.perk .ico svg{width:1.6rem;height:1.6rem}
+.perk h3{font-size:1.3rem}
+.perk p{font-size:var(--fs-caption);line-height:1.45}
+@media (min-width:860px){.perks{grid-template-columns:repeat(4,1fr);padding-top:4.5rem}.perk+.perk{border-left:1px solid var(--line)}}
+
+section.sec{padding:clamp(3.5rem,2.4rem + 4.5vw,6rem) 0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:.8rem 1.5rem;margin-bottom:2.4rem}
+.head h2{font-size:var(--fs-h2)}
+
+/* categorias */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1.2rem}
+.cat{display:grid;gap:1.1rem;padding:1.5rem 1.5rem 1.3rem;border-radius:28px;text-decoration:none;color:var(--ink);transition:transform .35s}
+.cat:hover{transform:translateY(-6px)}
+.cat h3{font-size:var(--fs-h3);text-align:center}
+.cat .shot{aspect-ratio:5/4;overflow:hidden;border-radius:18px}
+.cat .shot img{width:100%;height:100%;object-fit:cover}
+.cat .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:500}
+.cat .go{display:grid;place-items:center;flex:none;width:2.7rem;height:2.7rem;border-radius:50%;background:var(--bg);color:var(--ink)}
+.cat--a{background:linear-gradient(160deg,#ffc2b0 0%,#ffa68e 100%)}.cat--b{background:linear-gradient(160deg,#eab08a 0%,#dc966c 100%)}
+.cat--c{background:linear-gradient(160deg,#b13a4b 0%,#8c2a38 100%);color:var(--cream)}.cat--c h3{color:var(--cream)}
+@media (min-width:800px){.cats{gap:1.6rem}}
+
+/* produtos */
+.cream{background:linear-gradient(180deg,#ffeac5 0%,#fff0d6 100%)}.blush{background:linear-gradient(180deg,#ffdccf 0%,#ffe9df 100%)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media (min-width:800px){.grid{grid-template-columns:repeat(3,1fr);gap:1.6rem}}
+.card{display:grid;align-content:start;gap:.2rem;background:linear-gradient(180deg,#fffdf8,#fff6e8);border-radius:22px;padding:.7rem .7rem 1rem;box-shadow:0 1px 0 rgba(110,82,74,.1),0 14px 26px -18px rgba(110,82,74,.5);transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(110,82,74,.1),0 22px 32px -18px rgba(110,82,74,.55)}
+.card .ph{display:block;overflow:hidden;aspect-ratio:4/5;border-radius:16px;background:var(--cream)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card .ph:hover img{transform:scale(1.05)}
+.crop-b{transform-origin:50% 100%;scale:1.28}
+.card h3{font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem);margin:.8rem .3rem 0}
+.card .label{margin:.1rem .3rem .8rem}
+.strip{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1.2rem;-webkit-overflow-scrolling:touch}
+.strip .card{flex:0 0 min(270px,74vw);scroll-snap-align:start}
+
+/* sobre */
+.about{display:grid;gap:2.4rem;align-items:center}
+.about .pic{position:relative;width:min(420px,100%);aspect-ratio:4/5;margin-inline:auto}
+.about .pic img{width:100%;height:100%;object-fit:cover;border-radius:220px 220px 24px 24px;border:8px solid var(--cream)}
+.about h2{font-size:var(--fs-h2);margin:.8rem 0 1.1rem}
+.about p{margin-bottom:1.7rem}
+@media (min-width:860px){.about{grid-template-columns:.9fr 1.1fr;gap:5rem}}
+
+/* passos */
+.steps{display:grid;gap:2rem;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{counter-increment:s;border-top:1px solid var(--line);padding-top:1.2rem}
+.steps li::before{content:counter(s);display:block;font:italic 500 3.6rem/1 var(--font-display);color:var(--wine);margin-bottom:.5rem}
+.steps h3{font-size:var(--fs-h3);margin-bottom:.4rem}
+.steps p{max-width:30ch}
+@media (min-width:800px){.steps{grid-template-columns:repeat(3,1fr);gap:3rem}}
+
+/* chamada final */
+.dark{background:radial-gradient(70% 140% at 88% 0%,#bd4254 0%,rgba(189,66,84,0) 65%),linear-gradient(180deg,#9f3140,#85283a);color:var(--cream)}
+.dark h2{color:var(--cream)}.dark .label{color:#ffd3c4}
+.final{display:grid;gap:1.8rem;justify-items:start}
+.final h2{font-size:var(--fs-h2);max-width:18ch}
+@media (min-width:800px){.final{grid-template-columns:1fr auto;align-items:center}}
+
+footer{background:linear-gradient(180deg,#3b2823,#2e1e1a);color:#e9d3bd;padding:2.5rem 0 6.5rem}
+footer .cols{display:grid;gap:2rem;grid-template-columns:1fr}
+footer .brand{font-size:1.9rem}
+footer h3{font:500 var(--fs-caption)/1.4 var(--font-body);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--salmon);margin-bottom:.8rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+footer li{display:flex;gap:.6rem;align-items:center}
+footer .ic{width:1rem;height:1rem;flex:none;color:var(--salmon)}
+footer .copy{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid rgba(233,211,189,.2);font-size:var(--fs-caption)}
+@media (min-width:900px){footer .cols{grid-template-columns:1.4fr 1fr 1.2fr auto}}
+.fab{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:5;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:var(--wine);color:var(--cream);border:2px solid var(--salmon);box-shadow:0 8px 20px rgba(59,40,35,.35);transition:transform .2s}
+.fab:hover{transform:scale(1.07)}.fab .ic{width:1.6rem;height:1.6rem}
+/* responsividade */
+.bar{position:relative}
+.bar .soc{display:none}
+.btn span:first-child{min-width:0}
+@media (min-width:480px){.bar .soc{display:flex}}
+@media (min-width:800px){.menu{display:none}}
+@media (max-width:479px){.ctas .btn{width:100%;justify-content:space-between}.ctas .btn--line{justify-content:center}.final .btn{width:100%;justify-content:space-between}.note{left:0}.head{margin-bottom:1.8rem}}
+@media (max-width:359px){.grid{grid-template-columns:1fr}}
+@media (min-width:560px) and (max-width:799px){footer .cols{grid-template-columns:1fr 1fr}.perk h3{font-size:1.1rem}.steps{grid-template-columns:repeat(3,1fr);gap:1.4rem}}
+@media (min-width:1500px){.wrap{width:min(1320px,100% - 4rem)}}
+@media (hover:none){.card:hover,.cat:hover{transform:none}}
+@media (max-height:500px) and (orientation:landscape){.hero-grid{padding-top:1rem}}
+/* menu mobile (botão acessível) */
+.menu-btn{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;transition:background .2s ease,color .2s ease}
+.menu-btn .ic{width:1.3rem;height:1.3rem}
+.menu-btn[aria-expanded="true"]{background:var(--cream);color:var(--brown)}
+.menu-list{display:none;position:absolute;right:0;top:calc(100% + .3rem);z-index:20;min-width:min(260px,calc(100vw - 2.5rem));padding:.6rem;border-radius:20px;background:var(--cream);box-shadow:0 20px 40px -12px rgba(30,15,10,.5)}
+.menu-list.open{display:grid}
+.menu-list a{display:flex;align-items:center;min-height:2.9rem;padding:0 1rem;border-radius:12px;color:var(--ink);text-decoration:none;font:500 1rem/1 var(--font-body)}
+.menu-list a:hover{background:var(--blush)}
+/* base responsiva */
+html,body{max-width:100%;overflow-x:clip}
+[id]{scroll-margin-top:1rem}
+.fab{right:max(1rem,env(safe-area-inset-right))}
+@media (max-width:819px){.hero-grid>div:first-child{text-align:center}.hero p.lead{margin-inline:auto}.ctas{justify-content:center}}
+@media (max-width:479px){.pill{justify-content:center;padding:0 .5rem}.pill .ic{display:none}.card h3{margin-inline:.2rem}.card .label{margin-inline:.2rem}}
+/* hover dos botões do rodapé: ícone herda a cor, sem sublinhado */
+footer .soc a{border:1px solid rgba(233,211,189,.5);color:var(--cream)}
+footer .soc .ic{width:1.2rem;height:1.2rem;color:inherit}
+footer .soc a:hover,footer .soc a:focus-visible{background:var(--salmon);border-color:var(--salmon);color:var(--ink);text-decoration:none}
+footer li a{color:#e9d3bd;border-bottom:1px solid transparent}
+footer li a:hover{color:var(--cream);text-decoration:none;border-bottom-color:var(--salmon)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
 </head>
-
 <body>
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-        <symbol id="i-ig" viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.6" />
-            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6" />
-            <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" />
-        </symbol>
-        <symbol id="i-wa" viewBox="0 0 24 24">
-            <path fill="currentColor"
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </symbol>
-        <symbol id="i-arrow" viewBox="0 0 24 24">
-            <path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
-                stroke-linejoin="round" />
-        </symbol>
-        <symbol id="i-heart" viewBox="0 0 24 24">
-            <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none"
-                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-        </symbol>
-        <symbol id="i-cake" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 20h16M5 20v-6h14v6M5 14c2 0 2-2 3.5-2s1.5 2 3.5 2 2-2 3.5-2 1.5 2 3.5 2M12 11V8" />
-                <path d="M12 8c-1 0-1.5-.8-1.2-1.6.3-.8 1-1.3 1.2-2 .2.7.9 1.2 1.2 2 .3.8-.2 1.6-1.2 1.6z" />
-            </g>
-        </symbol>
-        <symbol id="i-gift" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="11" width="16" height="9" rx="1.5" />
-                <path
-                    d="M3 8h18v3H3zM12 8v12M12 8c-2 0-4-1-4-2.5S9.5 3.5 11 5c.6.6 1 2 1 3zM12 8c2 0 4-1 4-2.5S14.5 3.5 13 5c-.6.6-1 2-1 3z" />
-            </g>
-        </symbol>
-        <symbol id="i-cal" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="5" width="16" height="15" rx="2" />
-                <path d="M4 10h16M9 3v4M15 3v4" />
-            </g>
-        </symbol>
-        <symbol id="i-pin" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-                <path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z" />
-                <circle cx="12" cy="11" r="2.2" />
-            </g>
-        </symbol>
-        <symbol id="i-menu" viewBox="0 0 24 24">
-            <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" />
-        </symbol>
-    </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+ <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+ <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cake" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M5 20v-6h14v6M5 14c2 0 2-2 3.5-2s1.5 2 3.5 2 2-2 3.5-2 1.5 2 3.5 2M12 11V8"/><path d="M12 8c-1 0-1.5-.8-1.2-1.6.3-.8 1-1.3 1.2-2 .2.7.9 1.2 1.2 2 .3.8-.2 1.6-1.2 1.6z"/></g></symbol>
+ <symbol id="i-gift" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M3 8h18v3H3zM12 8v12M12 8c-2 0-4-1-4-2.5S9.5 3.5 11 5c.6.6 1 2 1 3zM12 8c2 0 4-1 4-2.5S14.5 3.5 13 5c-.6.6-1 2-1 3z"/></g></symbol>
+ <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></g></symbol>
+ <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></g></symbol>
+ <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+</svg>
 
-    <header class="hero">
-        <div class="wrap">
-            <div class="bar">
-                <a class="brand" href="#">Val Rodrigues</a>
-                <nav class="nav" aria-label="Principal"><a href="#doces">Doces</a><a href="#caixas">Caixas</a><a
-                        href="#sobre">Sobre</a><a href="#como-pedir">Como pedir</a></nav>
-                <div class="soc">
-                    <a href="https://instagram.com/_val_rodrigues" rel="noopener" aria-label="Instagram da Val"><svg
-                            class="ic">
-                            <use href="#i-ig" />
-                        </svg></a>
-                    <a href="https://wa.me/5511989819941" rel="noopener" aria-label="WhatsApp da Val"><svg class="ic">
-                            <use href="#i-wa" />
-                        </svg></a>
-                </div>
-                <details class="menu">
-                    <summary aria-label="Abrir menu"><svg class="ic">
-                            <use href="#i-menu" />
-                        </svg></summary>
-                    <nav class="menu-list" aria-label="Menu para celular"><a href="#doces">Doces</a><a
-                            href="#caixas">Caixas</a><a href="#sobre">Sobre</a><a href="#como-pedir">Como pedir</a>
-                    </nav>
-                </details>
-            </div>
-            <div class="hero-grid">
-                <div>
-                    <h1>Doces que viram lembrança.</h1>
-                    <p class="lead">Tortas, caixas e sobremesas artesanais, feitas sob encomenda em Diadema.</p>
-                    <div class="ctas">
-                        <a class="btn"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda."><span>Encomendar
-                                pelo WhatsApp</span><span class="go"><svg class="ic">
-                                    <use href="#i-wa" />
-                                </svg></span></a>
-                        <a class="btn btn--line" href="#doces"><span>Ver os doces</span><svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </div>
-                </div>
-                <div class="plate"><img src="fotos/confeitaria-023.webp"
-                        alt="Torta de frutas vermelhas com physalis"><span class="note" aria-hidden="true">feito com
-                        carinho</span></div>
-            </div>
-        </div>
-    </header>
-    <svg class="tear" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
-        <path
-            d="M0 0H1440V15.3L1440 15.3L1434 32.9L1412 32.5L1398 33.0L1380 16.2L1367 10.7L1358 18.5L1342 15.4L1323 29.6L1304 30.5L1282 29.5L1270 17.9L1251 22.8L1232 14.0L1218 16.3L1200 30.7L1178 22.7L1169 23.0L1158 22.7L1137 10.6L1126 29.9L1113 18.2L1103 12.1L1088 21.2L1066 30.4L1055 18.7L1042 16.1L1031 24.7L1010 10.6L997 12.4L986 10.0L976 18.2L965 15.0L955 11.5L938 12.5L924 19.4L904 31.0L885 31.6L875 26.2L858 22.4L840 32.9L824 18.9L809 10.1L797 24.1L782 15.6L770 14.2L759 33.0L738 18.6L724 16.7L704 29.7L683 23.2L668 11.9L648 19.4L636 13.1L617 11.4L606 14.0L591 10.5L574 19.3L561 29.7L539 25.5L521 11.5L503 21.4L482 30.2L467 23.9L450 26.7L437 31.0L421 28.3L403 10.9L388 13.6L369 20.0L358 33.5L346 27.5L325 22.6L309 15.9L291 29.1L278 20.9L261 17.5L247 26.3L235 11.4L225 23.1L211 25.3L195 14.3L175 17.4L165 13.5L152 30.6L142 33.4L128 23.9L107 25.1L95 13.0L75 20.2L65 11.7L50 10.9L35 11.4L21 22.9L11 25.6L0 17.8Z" />
-    </svg>
+<header class="hero">
+ <div class="wrap">
+  <div class="bar">
+   <a class="brand" href="#">Val Rodrigues</a>
+   <nav class="nav" aria-label="Principal"><a href="#doces">Doces</a><a href="#caixas">Caixas</a><a href="#sobre">Sobre</a><a href="#como-pedir">Como pedir</a></nav>
+   <div class="soc">
+    <a href="https://instagram.com/_val_rodrigues" rel="noopener" aria-label="Instagram da Val"><svg class="ic"><use href="#i-ig"/></svg></a>
+    <a href="https://wa.me/5511989819941" rel="noopener" aria-label="WhatsApp da Val"><svg class="ic"><use href="#i-wa"/></svg></a>
+   </div>
+   <div class="menu">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-list" aria-label="Abrir menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    <nav id="menu-list" class="menu-list" aria-label="Menu para celular"><a href="#doces">Doces</a><a href="#caixas">Caixas</a><a href="#sobre">Sobre</a><a href="#como-pedir">Como pedir</a></nav>
+   </div>
+  </div>
+  <div class="hero-grid">
+   <div>
+    <h1>Doces que viram lembrança</h1>
+    <p class="lead">Tortas, caixas e sobremesas artesanais, feitas sob encomenda em Diadema.</p>
+    <div class="ctas">
+     <a class="btn" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda."><span>Encomendar pelo WhatsApp</span><span class="go"><svg class="ic"><use href="#i-wa"/></svg></span></a>
+     <a class="btn btn--line" href="#doces"><span>Ver os doces</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+   </div>
+   <div class="plate"><img src="fotos/confeitaria-023.webp" width="460" height="460" fetchpriority="high" decoding="async" alt="Torta de frutas vermelhas com physalis"><span class="note" aria-hidden="true">feito com carinho</span></div>
+  </div>
+ </div>
+</header>
+<svg class="tear" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V15.3L1440 15.3L1434 32.9L1412 32.5L1398 33.0L1380 16.2L1367 10.7L1358 18.5L1342 15.4L1323 29.6L1304 30.5L1282 29.5L1270 17.9L1251 22.8L1232 14.0L1218 16.3L1200 30.7L1178 22.7L1169 23.0L1158 22.7L1137 10.6L1126 29.9L1113 18.2L1103 12.1L1088 21.2L1066 30.4L1055 18.7L1042 16.1L1031 24.7L1010 10.6L997 12.4L986 10.0L976 18.2L965 15.0L955 11.5L938 12.5L924 19.4L904 31.0L885 31.6L875 26.2L858 22.4L840 32.9L824 18.9L809 10.1L797 24.1L782 15.6L770 14.2L759 33.0L738 18.6L724 16.7L704 29.7L683 23.2L668 11.9L648 19.4L636 13.1L617 11.4L606 14.0L591 10.5L574 19.3L561 29.7L539 25.5L521 11.5L503 21.4L482 30.2L467 23.9L450 26.7L437 31.0L421 28.3L403 10.9L388 13.6L369 20.0L358 33.5L346 27.5L325 22.6L309 15.9L291 29.1L278 20.9L261 17.5L247 26.3L235 11.4L225 23.1L211 25.3L195 14.3L175 17.4L165 13.5L152 30.6L142 33.4L128 23.9L107 25.1L95 13.0L75 20.2L65 11.7L50 10.9L35 11.4L21 22.9L11 25.6L0 17.8Z"/></svg>
 
-    <main>
-        <div class="wrap perks">
-            <div class="perk"><span class="ico"><svg>
-                        <use href="#i-cake" />
-                    </svg></span>
-                <h3>Feito à mão</h3>
-                <p>Cada doce preparado do zero.</p>
-            </div>
-            <div class="perk"><span class="ico"><svg>
-                        <use href="#i-heart" />
-                    </svg></span>
-                <h3>Com carinho</h3>
-                <p>Do sabor ao acabamento.</p>
-            </div>
-            <div class="perk"><span class="ico"><svg>
-                        <use href="#i-gift" />
-                    </svg></span>
-                <h3>Festas e presentes</h3>
-                <p>Tortas e caixas para dividir.</p>
-            </div>
-            <div class="perk"><span class="ico"><svg>
-                        <use href="#i-cal" />
-                    </svg></span>
-                <h3>Sob encomenda</h3>
-                <p>Combine data e sabor.</p>
-            </div>
-        </div>
+<main>
+<div class="wrap perks">
+ <div class="perk"><span class="ico"><svg><use href="#i-cake"/></svg></span><h3>Feito à mão</h3><p>Cada doce preparado do zero.</p></div>
+ <div class="perk"><span class="ico"><svg><use href="#i-heart"/></svg></span><h3>Com carinho</h3><p>Do sabor ao acabamento.</p></div>
+ <div class="perk"><span class="ico"><svg><use href="#i-gift"/></svg></span><h3>Festas e presentes</h3><p>Tortas e caixas para dividir.</p></div>
+ <div class="perk"><span class="ico"><svg><use href="#i-cal"/></svg></span><h3>Sob encomenda</h3><p>Combine data e sabor.</p></div>
+</div>
 
-        <section class="sec">
-            <div class="wrap">
-                <div class="head">
-                    <h2>Escolha seu doce</h2><span class="label">Três jeitos de adoçar o dia</span>
-                </div>
-                <div class="cats">
-                    <a class="cat cat--a" href="#doces">
-                        <h3>Tortas</h3>
-                        <div class="shot"><img src="fotos/confeitaria-016.webp" alt="Torta de morango" loading="lazy">
-                        </div>
-                        <div class="row"><span>Frutas, chocolate, limão e maracujá</span><span class="go"><svg
-                                    class="ic">
-                                    <use href="#i-arrow" />
-                                </svg></span></div>
-                    </a>
-                    <a class="cat cat--b" href="#caixas">
-                        <h3>Caixas</h3>
-                        <div class="shot"><img src="fotos/confeitaria-046.webp" alt="Caixa de morango e merengue"
-                                loading="lazy"></div>
-                        <div class="row"><span>Camadas generosas para dividir</span><span class="go"><svg class="ic">
-                                    <use href="#i-arrow" />
-                                </svg></span></div>
-                    </a>
-                    <a class="cat cat--c" href="#caixas">
-                        <h3>Sobremesas</h3>
-                        <div class="shot"><img src="fotos/confeitaria-005.webp" alt="Pudim com calda dourada"
-                                loading="lazy"></div>
-                        <div class="row"><span>Clássicos que todo mundo ama</span><span class="go"><svg class="ic">
-                                    <use href="#i-arrow" />
-                                </svg></span></div>
-                    </a>
-                </div>
-            </div>
-        </section>
+<section class="sec">
+ <div class="wrap">
+  <div class="head"><h2>Escolha seu doce</h2><span class="label">Três jeitos de adoçar o dia</span></div>
+  <div class="cats">
+   <a class="cat cat--a" href="#doces"><h3>Tortas</h3><div class="shot"><img src="fotos/confeitaria-016.webp" alt="Torta de morango" loading="lazy"></div><div class="row"><span>Frutas, chocolate, limão e maracujá</span><span class="go"><svg class="ic"><use href="#i-arrow"/></svg></span></div></a>
+   <a class="cat cat--b" href="#caixas"><h3>Caixas</h3><div class="shot"><img src="fotos/confeitaria-046.webp" alt="Caixa de morango e merengue" loading="lazy"></div><div class="row"><span>Camadas generosas para dividir</span><span class="go"><svg class="ic"><use href="#i-arrow"/></svg></span></div></a>
+   <a class="cat cat--c" href="#caixas"><h3>Sobremesas</h3><div class="shot"><img src="fotos/confeitaria-005.webp" alt="Pudim com calda dourada" loading="lazy"></div><div class="row"><span>Clássicos que todo mundo ama</span><span class="go"><svg class="ic"><use href="#i-arrow"/></svg></span></div></a>
+  </div>
+ </div>
+</section>
 
-        <section class="sec cream" id="doces">
-            <div class="wrap">
-                <div class="head">
-                    <h2>Tortas</h2><span class="label">Frutas, chocolate, limão e maracujá</span>
-                </div>
-                <div class="grid">
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20morango"><img
-                                src="fotos/confeitaria-016.webp" alt="Torta de morango com calda brilhante"
-                                loading="lazy"></a>
-                        <h3>Torta de morango</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20morango">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Red%20velvet%20com%20morango"><img
-                                class="crop-b" src="fotos/confeitaria-018.webp" alt="Red velvet com morangos"
-                                loading="lazy"></a>
-                        <h3>Red velvet com morango</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Red%20velvet%20com%20morango">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20morango"><img
-                                src="fotos/confeitaria-028.webp" alt="Torta de chocolate com morangos"
-                                loading="lazy"></a>
-                        <h3>Chocolate com morango</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20morango">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20Kinder"><img
-                                src="fotos/confeitaria-027.webp" alt="Torta de chocolate com Kinder e morangos"
-                                loading="lazy"></a>
-                        <h3>Chocolate com Kinder</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20Kinder">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20maracuj%C3%A1"><img
-                                src="fotos/confeitaria-009.webp" alt="Torta de maracujá fatiada" loading="lazy"></a>
-                        <h3>Torta de maracujá</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20maracuj%C3%A1">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20lim%C3%A3o%20com%20merengue"><img
-                                src="fotos/confeitaria-036.webp" alt="Torta de limão com merengue" loading="lazy"></a>
-                        <h3>Limão com merengue</h3><span class="label">Torta</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20lim%C3%A3o%20com%20merengue">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                </div>
-            </div>
-        </section>
+<section class="sec cream" id="doces">
+ <div class="wrap">
+  <div class="head"><h2>Tortas</h2><span class="label">Frutas, chocolate, limão e maracujá</span></div>
+  <div class="grid">
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20morango"><img src="fotos/confeitaria-016.webp" alt="Torta de morango com calda brilhante" loading="lazy"></a><h3>Torta de morango</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20morango">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Red%20velvet%20com%20morango"><img class="crop-b" src="fotos/confeitaria-018.webp" alt="Red velvet com morangos" loading="lazy"></a><h3>Red velvet com morango</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Red%20velvet%20com%20morango">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20morango"><img src="fotos/confeitaria-028.webp" alt="Torta de chocolate com morangos" loading="lazy"></a><h3>Chocolate com morango</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20morango">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20Kinder"><img src="fotos/confeitaria-027.webp" alt="Torta de chocolate com Kinder e morangos" loading="lazy"></a><h3>Chocolate com Kinder</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20chocolate%20com%20Kinder">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20maracuj%C3%A1"><img src="fotos/confeitaria-009.webp" alt="Torta de maracujá fatiada" loading="lazy"></a><h3>Torta de maracujá</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20maracuj%C3%A1">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20lim%C3%A3o%20com%20merengue"><img src="fotos/confeitaria-036.webp" alt="Torta de limão com merengue" loading="lazy"></a><h3>Limão com merengue</h3><span class="label">Torta</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Torta%20de%20lim%C3%A3o%20com%20merengue">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+  </div>
+ </div>
+</section>
 
-        <section class="sec blush" id="caixas">
-            <div class="wrap">
-                <div class="head">
-                    <h2>Caixas e sobremesas</h2>
-                </div>
-                <div class="grid">
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20morango%20e%20merengue"><img
-                                src="fotos/confeitaria-046.webp" alt="Caixa com morango e merengue" loading="lazy"></a>
-                        <h3>Morango e merengue</h3><span class="label">Caixa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20morango%20e%20merengue">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20com%20morango"><img
-                                src="fotos/confeitaria-048.webp" alt="Caixa de chocolate com morango"
-                                loading="lazy"></a>
-                        <h3>Chocolate com morango</h3><span class="label">Caixa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20com%20morango">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20frutas%20vermelhas"><img
-                                src="fotos/confeitaria-041.webp" alt="Caixa de frutas vermelhas" loading="lazy"></a>
-                        <h3>Frutas vermelhas</h3><span class="label">Caixa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20frutas%20vermelhas">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20crocante"><img
-                                src="fotos/confeitaria-043.webp" alt="Caixa com lascas de chocolate" loading="lazy"></a>
-                        <h3>Chocolate crocante</h3><span class="label">Caixa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20crocante">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20red%20velvet"><img
-                                src="fotos/confeitaria-058.webp" alt="Caixa red velvet" loading="lazy"></a>
-                        <h3>Red velvet</h3><span class="label">Caixa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20red%20velvet">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                    <article class="card"><a class="ph"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Pudim"><img
-                                src="fotos/confeitaria-005.webp" alt="Pudim com calda dourada" loading="lazy"></a>
-                        <h3>Pudim</h3><span class="label">Sobremesa</span><a class="pill"
-                            href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Pudim">Encomendar
-                            <svg class="ic">
-                                <use href="#i-arrow" />
-                            </svg></a>
-                    </article>
-                </div>
-            </div>
-        </section>
+<section class="sec blush" id="caixas">
+ <div class="wrap">
+  <div class="head"><h2>Caixas e sobremesas</h2></div>
+  <div class="grid">
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20morango%20e%20merengue"><img src="fotos/confeitaria-046.webp" alt="Caixa com morango e merengue" loading="lazy"></a><h3>Morango e merengue</h3><span class="label">Caixa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20morango%20e%20merengue">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20com%20morango"><img src="fotos/confeitaria-048.webp" alt="Caixa de chocolate com morango" loading="lazy"></a><h3>Chocolate com morango</h3><span class="label">Caixa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20com%20morango">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20frutas%20vermelhas"><img src="fotos/confeitaria-041.webp" alt="Caixa de frutas vermelhas" loading="lazy"></a><h3>Frutas vermelhas</h3><span class="label">Caixa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20frutas%20vermelhas">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20crocante"><img src="fotos/confeitaria-043.webp" alt="Caixa com lascas de chocolate" loading="lazy"></a><h3>Chocolate crocante</h3><span class="label">Caixa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20de%20chocolate%20crocante">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20red%20velvet"><img src="fotos/confeitaria-058.webp" alt="Caixa red velvet" loading="lazy"></a><h3>Red velvet</h3><span class="label">Caixa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Caixa%20red%20velvet">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+   <article class="card"><a class="ph" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Pudim"><img src="fotos/confeitaria-005.webp" alt="Pudim com calda dourada" loading="lazy"></a><h3>Pudim</h3><span class="label">Sobremesa</span><a class="pill" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20encomendar%3A%20Pudim">Encomendar <svg class="ic"><use href="#i-arrow"/></svg></a></article>
+  </div>
+ </div>
+</section>
 
-        <section class="sec" id="sobre">
-            <div class="wrap about">
-                <div class="pic"><img src="fotos/confeitaria-058.webp" alt="Caixa de sobremesa red velvet"
-                        loading="lazy"></div>
-                <div>
-                    <span class="label">Sobre a Val</span>
-                    <h2>Confeitaria feita à mão, em Diadema</h2>
-                    <p>A Val prepara tortas, caixas e sobremesas sob encomenda, cuidando de cada detalhe, do sabor ao
-                        acabamento.</p>
-                    <a class="btn btn--ghost" href="#como-pedir"><span>Como encomendar</span><svg class="ic">
-                            <use href="#i-arrow" />
-                        </svg></a>
-                </div>
-            </div>
-        </section>
+<section class="sec" id="sobre">
+ <div class="wrap about">
+  <div class="pic"><img src="fotos/confeitaria-058.webp" alt="Caixa de sobremesa red velvet" loading="lazy"></div>
+  <div>
+   <span class="label">Sobre a Val</span>
+   <h2>Confeitaria feita à mão, em Diadema</h2>
+   <p>A Val prepara tortas, caixas e sobremesas sob encomenda, cuidando de cada detalhe, do sabor ao acabamento.</p>
+   <a class="btn btn--ghost" href="#como-pedir"><span>Como encomendar</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+  </div>
+ </div>
+</section>
 
-        <section class="sec cream" id="como-pedir">
-            <div class="wrap">
-                <div class="head">
-                    <h2>Como encomendar</h2>
-                </div>
-                <ol class="steps">
-                    <li>
-                        <h3>Chame a Val no WhatsApp</h3>
-                        <p>Conte a data e o tipo de ocasião.</p>
-                    </li>
-                    <li>
-                        <h3>Escolha o doce e o tamanho</h3>
-                        <p>Ela mostra as opções e combina o valor com você.</p>
-                    </li>
-                    <li>
-                        <h3>Combine a retirada</h3>
-                        <p>Atendimento em Diadema, SP. Endereço completo em breve.</p>
-                    </li>
-                </ol>
-            </div>
-        </section>
+<section class="sec cream" id="como-pedir">
+ <div class="wrap">
+  <div class="head"><h2>Como encomendar</h2></div>
+  <ol class="steps">
+   <li><h3>Chame a Val no WhatsApp</h3><p>Conte a data e o tipo de ocasião.</p></li>
+   <li><h3>Escolha o doce e o tamanho</h3><p>Ela mostra as opções e combina o valor com você.</p></li>
+   <li><h3>Combine a retirada</h3><p>Atendimento em Diadema, SP. Endereço completo em breve.</p></li>
+  </ol>
+ </div>
+</section>
 
-        <section class="sec dark">
-            <div class="wrap final">
-                <h2>Vai ter festa, almoço ou só vontade de doce?</h2>
-                <a class="btn"
-                    href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda."><span>Fazer
-                        meu pedido no WhatsApp</span><span class="go"><svg class="ic">
-                            <use href="#i-wa" />
-                        </svg></span></a>
-            </div>
-        </section>
-    </main>
+<section class="sec dark">
+ <div class="wrap final">
+  <h2>Vai ter festa, almoço ou só vontade de doce?</h2>
+  <a class="btn" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda."><span>Fazer meu pedido no WhatsApp</span><span class="go"><svg class="ic"><use href="#i-wa"/></svg></span></a>
+ </div>
+</section>
+</main>
 
-    <svg class="tear tear--top" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
-        <path
-            d="M0 40V15.4L0 15.4L12 14.9L29 31.6L49 21.5L66 29.2L76 25.9L97 28.8L116 21.5L127 28.9L140 29.2L162 19.5L176 32.7L195 14.1L205 13.6L226 29.4L237 29.8L259 25.8L272 23.2L283 10.3L305 25.6L320 32.4L335 30.9L355 15.1L367 17.0L379 24.1L392 20.1L402 31.8L416 21.0L433 31.7L447 32.0L462 22.8L478 10.4L493 14.4L502 29.2L513 21.4L532 23.4L545 22.4L561 28.8L572 23.4L584 16.6L603 22.2L619 28.2L640 20.6L657 22.1L673 26.6L688 22.8L703 32.6L721 31.0L742 16.2L758 32.6L778 13.3L789 20.6L799 15.8L809 26.1L828 31.5L839 27.2L857 13.4L877 33.2L889 32.9L903 21.7L925 30.0L936 20.4L952 18.1L963 17.6L982 10.5L998 20.6L1007 18.0L1024 22.3L1034 33.6L1053 33.3L1064 16.4L1073 28.7L1086 13.1L1100 31.9L1120 16.2L1131 32.1L1147 26.8L1157 11.4L1175 20.2L1185 32.5L1202 29.2L1213 30.5L1222 30.7L1237 18.1L1253 32.2L1266 13.1L1282 15.7L1292 13.9L1302 14.8L1315 17.3L1334 17.0L1349 14.3L1363 10.4L1375 10.4L1394 23.2L1405 21.4L1426 12.6L1440 20.4V40Z" />
-    </svg>
-    <footer>
-        <div class="wrap">
-            <div class="cols">
-                <div><a class="brand" href="#">Val Rodrigues</a>
-                    <p style="margin-top:.6rem">Confeitaria artesanal sob encomenda.</p>
-                </div>
-                <div>
-                    <h3>Navegue</h3>
-                    <ul>
-                        <li><a href="#doces">Tortas</a></li>
-                        <li><a href="#caixas">Caixas e sobremesas</a></li>
-                        <li><a href="#como-pedir">Como encomendar</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Contato</h3>
-                    <ul>
-                        <li><svg class="ic">
-                                <use href="#i-pin" />
-                            </svg><span>Diadema, SP (endereço em breve)</span></li>
-                        <li><svg class="ic">
-                                <use href="#i-wa" />
-                            </svg><a href="https://wa.me/5511989819941">(11) 98981-9941</a></li>
-                        <li><svg class="ic">
-                                <use href="#i-ig" />
-                            </svg><a href="https://instagram.com/_val_rodrigues" rel="noopener">@_val_rodrigues</a></li>
-                    </ul>
-                </div>
-                <div class="soc">
-                    <a href="https://instagram.com/_val_rodrigues" rel="noopener" aria-label="Instagram da Val"><svg
-                            class="ic">
-                            <use href="#i-ig" />
-                        </svg></a>
-                    <a href="https://wa.me/5511989819941" rel="noopener" aria-label="WhatsApp da Val"><svg class="ic">
-                            <use href="#i-wa" />
-                        </svg></a>
-                </div>
-            </div>
-            <p class="copy">© 2026 Val Rodrigues. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-    <a class="fab"
-        href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda."
-        aria-label="Chamar a Val no WhatsApp"><svg class="ic">
-            <use href="#i-wa" />
-        </svg></a>
-    <script>document.querySelectorAll('.menu a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').removeAttribute('open') }) })</script>
+<svg class="tear tear--top" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40V15.4L0 15.4L12 14.9L29 31.6L49 21.5L66 29.2L76 25.9L97 28.8L116 21.5L127 28.9L140 29.2L162 19.5L176 32.7L195 14.1L205 13.6L226 29.4L237 29.8L259 25.8L272 23.2L283 10.3L305 25.6L320 32.4L335 30.9L355 15.1L367 17.0L379 24.1L392 20.1L402 31.8L416 21.0L433 31.7L447 32.0L462 22.8L478 10.4L493 14.4L502 29.2L513 21.4L532 23.4L545 22.4L561 28.8L572 23.4L584 16.6L603 22.2L619 28.2L640 20.6L657 22.1L673 26.6L688 22.8L703 32.6L721 31.0L742 16.2L758 32.6L778 13.3L789 20.6L799 15.8L809 26.1L828 31.5L839 27.2L857 13.4L877 33.2L889 32.9L903 21.7L925 30.0L936 20.4L952 18.1L963 17.6L982 10.5L998 20.6L1007 18.0L1024 22.3L1034 33.6L1053 33.3L1064 16.4L1073 28.7L1086 13.1L1100 31.9L1120 16.2L1131 32.1L1147 26.8L1157 11.4L1175 20.2L1185 32.5L1202 29.2L1213 30.5L1222 30.7L1237 18.1L1253 32.2L1266 13.1L1282 15.7L1292 13.9L1302 14.8L1315 17.3L1334 17.0L1349 14.3L1363 10.4L1375 10.4L1394 23.2L1405 21.4L1426 12.6L1440 20.4V40Z"/></svg>
+<footer>
+ <div class="wrap">
+  <div class="cols">
+   <div><a class="brand" href="#">Val Rodrigues</a><p style="margin-top:.6rem">Confeitaria artesanal sob encomenda.</p></div>
+   <div><h3>Navegue</h3><ul><li><a href="#doces">Tortas</a></li><li><a href="#caixas">Caixas e sobremesas</a></li><li><a href="#como-pedir">Como encomendar</a></li></ul></div>
+   <div><h3>Contato</h3><ul>
+    <li><svg class="ic"><use href="#i-pin"/></svg><span>Diadema, SP (endereço em breve)</span></li>
+    <li><svg class="ic"><use href="#i-wa"/></svg><a href="https://wa.me/5511989819941">(11) 98981-9941</a></li>
+    <li><svg class="ic"><use href="#i-ig"/></svg><a href="https://instagram.com/_val_rodrigues" rel="noopener">@_val_rodrigues</a></li></ul></div>
+   <div class="soc">
+    <a href="https://instagram.com/_val_rodrigues" rel="noopener" aria-label="Instagram da Val"><svg class="ic"><use href="#i-ig"/></svg></a>
+    <a href="https://wa.me/5511989819941" rel="noopener" aria-label="WhatsApp da Val"><svg class="ic"><use href="#i-wa"/></svg></a>
+   </div>
+  </div>
+  <p class="copy">© 2026 Val Rodrigues. Todos os direitos reservados.</p>
+ </div>
+</footer>
+<a class="fab" href="https://wa.me/5511989819941?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." aria-label="Chamar a Val no WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+<script>(function(){var b=document.querySelector('.menu-btn'),m=document.getElementById('menu-list');if(!b||!m)return;function set(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Fechar menu':'Abrir menu')}b.addEventListener('click',function(){set(!m.classList.contains('open'))});m.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){set(false);b.focus()}});document.addEventListener('click',function(e){if(!e.target.closest('.menu'))set(false)})})();</script>
 </body>
-
 </html>
